@@ -1,40 +1,32 @@
-# pre-git
+# post-merge-make
 
-A simple `pre-commit` and `pre-push` hook installer for `git`.
+Runs `make post-merge` command after git pull or merge.
 
-[![NPM][pre-git-icon]][pre-git-url]
+[![NPM][post-merge-make-icon]][post-merge-make-url]
 
-[![Build status][pre-git-ci-image]][pre-git-ci-url]
-[![dependencies][pre-git-dependencies-image]][pre-git-dependencies-url]
-[![devdependencies][pre-git-devdependencies-image]][pre-git-devdependencies-url]
+[![Build status][post-merge-make-ci-image]][post-merge-make-ci-url]
+[![dependencies][post-merge-make-dependencies-image]][post-merge-make-dependencies-url]
+[![devdependencies][post-merge-make-devdependencies-image]][post-merge-make-devdependencies-url]
 [![endorse][endorse-image]][endorse-url]
 
 ### Installation
 
-It's advised to install this module as `devDependency` in your `package.json`
-file so it doesn't get installed on production servers. Run:
+From the root of your repo:
 
 ```
-npm install pre-git --save-dev
+npm install post-merge-make
 ```
+
+If you have Node package.json, save this module as a dev dependency using `--save-dev`
 
 ### Configuration
 
-Specify commands to run on *commit* and on *push* in your package.json
+Specify target in your Makefile
 
 ```
-"scripts": {
-  "test": "node-qunit *.js"
-},
-"pre-commit": [
-  "grunt jshint"
-],
-"pre-push": [
-  "rm -rf node_modules",
-  "npm install",
-  "grunt build",
-  "grunt test"
-]
+post-merge: install build
+
+install: ...
 ```
 
 ### Small print
@@ -50,19 +42,19 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 Spread the word: tweet, star on github, etc.
 
 Support: if you find any problems with this module, email / tweet /
-[open issue](https://github.com/bahmutov/pre-git/issues?state=open) on Github
+[open issue](https://github.com/bahmutov/post-merge-make/issues?state=open) on Github
 
 ### License
 
 MIT
 
-[pre-git-icon]: https://nodei.co/npm/pre-git.png?downloads=true
-[pre-git-url]: https://npmjs.org/package/pre-git
-[pre-git-ci-image]: https://travis-ci.org/bahmutov/pre-git.png?branch=master
-[pre-git-ci-url]: https://travis-ci.org/bahmutov/pre-git
-[pre-git-dependencies-image]: https://david-dm.org/bahmutov/pre-git.png
-[pre-git-dependencies-url]: https://david-dm.org/bahmutov/pre-git
-[pre-git-devdependencies-image]: https://david-dm.org/bahmutov/pre-git/dev-status.png
-[pre-git-devdependencies-url]: https://david-dm.org/bahmutov/pre-git#info=devDependencies
+[post-merge-make-icon]: https://nodei.co/npm/post-merge-make.png?downloads=true
+[post-merge-make-url]: https://npmjs.org/package/post-merge-make
+[post-merge-make-ci-image]: https://travis-ci.org/bahmutov/post-merge-make.png?branch=master
+[post-merge-make-ci-url]: https://travis-ci.org/bahmutov/post-merge-make
+[post-merge-make-dependencies-image]: https://david-dm.org/bahmutov/post-merge-make.png
+[post-merge-make-dependencies-url]: https://david-dm.org/bahmutov/post-merge-make
+[post-merge-make-devdependencies-image]: https://david-dm.org/bahmutov/post-merge-make/dev-status.png
+[post-merge-make-devdependencies-url]: https://david-dm.org/bahmutov/post-merge-make#info=devDependencies
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
