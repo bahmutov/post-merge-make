@@ -29,6 +29,11 @@ post-merge: install build
 install: ...
 ```
 
+### Related
+
+Run different commands from Node project on commit or push using
+[pre-git](https://github.com/bahmutov/pre-git)
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2014

@@ -59,37 +59,23 @@ if (!existsSync(git) || !fs.lstatSync(git).isDirectory()) {
 }());
 
 
-(function copyFile(name) {
-  var fullname = path.join('./hooks', name);
-  if (!existsSync(fullname)) {
-    throw new Error('cannot find ' + fullname);
-  }
-  var content = fs.readFileSync(fullname);
-  var destination = path.resolve(hooks, name);
-  fs.writeFileSync(destination, content);
-}('pre-common.js'));
-
-
-var hookScripts = ['pre-commit', 'pre-push'];
+var hookScripts = ['post-merge'];
 hookScripts.forEach(installHook);
 
 function installHook(name) {
   console.log('installing hook', name);
 
-  var precommit = path.resolve(hooks, name);
-  //
-  // Our own hook runner.
-  //
+  var hookName = path.resolve(hooks, name);
   var hook = fs.readFileSync('./hooks/' + name + '.js');
 
   //
   // If there's an existing `pre-commit` hook we want to back it up instead of
   // overriding it and losing it completely
   //
-  if (existsSync(precommit)) {
+  if (existsSync(hookName)) {
     console.log('');
     console.log(name + ': Detected an existing git hook');
-    fs.writeFileSync(precommit + '.old', fs.readFileSync(precommit));
+    fs.writeFileSync(hookName + '.old', fs.readFileSync(hookName));
     console.log(name + ': Old hook backuped to .old');
     console.log('');
   }
