@@ -66,7 +66,7 @@ function installHook(name) {
   console.log('installing hook', name);
 
   var hookName = path.resolve(hooks, name);
-  var hook = fs.readFileSync('./hooks/' + name + '.js');
+  var hook = fs.readFileSync(name + '.js');
 
   //
   // If there's an existing `pre-commit` hook we want to back it up instead of
@@ -84,6 +84,6 @@ function installHook(name) {
   // Everything is ready for the installation of the pre-commit hook. Write it and
   // make it executable.
   //
-  fs.writeFileSync(precommit, hook);
-  fs.chmodSync(precommit, '755');
+  fs.writeFileSync(hookName, hook);
+  fs.chmodSync(hookName, '755');
 }

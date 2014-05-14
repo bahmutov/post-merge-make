@@ -2,7 +2,7 @@
 
 var spawn = require('child_process').spawn;
 
-function runMakeInstall() {
+function runMake() {
   var make = spawn('make', ['post-merge']);
   make.stdout.setEncoding('utf8');
   make.stderr.setEncoding('utf8');
