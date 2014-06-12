@@ -25,7 +25,6 @@ function runMake() {
 
 function hasNoChanges() {
   // args - see http://www.manpagez.com/man/5/githooks/
-  console.log(process.argv);
   var wasSquash = process.argv[2] === '1';
   return wasSquash;
 }
